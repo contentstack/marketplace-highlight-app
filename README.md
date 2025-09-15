@@ -112,7 +112,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/contentstack/marketplace-highlight-app/issues)
-- **Documentation**: [Contentstack Developer Hub](https://www.contentstack.com/docs/)
+- **Documentation**: [Contentstack Developer Hub](https://www.contentstack.com/docs/developers/developer-hub)
 - **Marketplace**: [Contentstack Marketplace App Guide](https://www.contentstack.com/docs/developers/marketplace-apps/highlight)
 - **Community**: [Contentstack Community](https://community.contentstack.com/)
 

@@ -1,25 +1,22 @@
 import React from 'react';
-import ContentstackSDK from '@contentstack/app-sdk';
+import ContentstackAppSDK, { PluginBuilder } from '@contentstack/app-sdk';
 
 import './styles/styles.css';
 import { HighlightIcon } from './components';
 
-export default ContentstackSDK.init().then(async (sdk) => {
-    const extensionObj = await sdk['location'];
-    const RTE = await extensionObj['RTEPlugin'];
-    if (!RTE) return;
+// Highlight component
+function Highlight(props: any) {
+    const { children } = props;
+    return <span className="highlight">{children}</span>;
+}
 
-    const Highlight = RTE('highlight', () => ({
-        title: 'Highlight',
-        icon: <HighlightIcon />,
-        render: (props: any) => {
-            return <span className="highlight">{props.children}</span>;
-        },
-        display: ['toolbar', 'hoveringToolbar'],
-        elementType: ['text'],
-    }));
+// Plugin definition using Builder pattern
+const HighlightPluginDefinition = new PluginBuilder("highlight")
+    .title("Highlight")
+    .icon(<HighlightIcon />)
+    .elementType("text")
+    .display(["toolbar", "hoveringToolbar"])
+    .render(Highlight)
+    .build();
 
-    return {
-        Highlight,
-    };
-});
+export default ContentstackAppSDK.registerRTEPlugins(HighlightPluginDefinition);

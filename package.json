@@ -1,6 +1,6 @@
 {
     "name": "@contentstack/marketplace-highlight-app",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Highlight Plugin for Contentstack JSON Rich Text Editor",
     "entry": "plugin",
     "output": "highlight.js",

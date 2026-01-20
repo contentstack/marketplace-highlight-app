@@ -24,3 +24,9 @@ dist
 .vercel
 .env
 .eslintcache
+
+storageState.json
+playwright-report/
+test-results/
+playwright/.cache/
+.state.json

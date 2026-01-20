@@ -15,7 +15,9 @@
         "dev": "webpack --config webpack.dev.js",
         "lint": "tslint -p tsconfig.json -c tslint.json",
         "lint:fix": "tslint -p tsconfig.json -c tslint.json --fix",
-        "format": "prettier --write \"src/**/*.{ts,tsx,css}\""
+        "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+        "test:e2e": "playwright test",
+        "test:e2e:ui": "playwright test --ui"
     },
     "author": "Contentstack",
     "license": "MIT",
@@ -24,9 +26,11 @@
         "url": "https://github.com/contentstack/marketplace-highlight-app.git"
     },
     "devDependencies": {
+        "@playwright/test": "^1.55.0",
         "@types/node": "^10.17.5",
         "@types/react": "^16.9.11",
         "css-loader": "^6.5.1",
+        "playwright": "^1.55.0",
         "prettier": "^3.6.2",
         "source-map-loader": "^0.2.4",
         "style-loader": "^1.2.1",
@@ -49,6 +53,7 @@
     "dependencies": {
         "@contentstack/app-sdk": "^2.3.3",
         "@emotion/core": "^10.0.22",
+        "dotenv": "^17.2.3",
         "react": "^16.11.0",
         "react-dom": "^16.13.1"
     },

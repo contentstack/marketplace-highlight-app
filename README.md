@@ -15,7 +15,7 @@ A modern, accessible highlight text plugin for Contentstack's JSON Rich Text Edi
 
 ## 📋 Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v18 or higher)
 - npm (v8 or higher)
 - A Contentstack account
 
@@ -85,9 +85,25 @@ This project follows the [Conventional Commits](https://www.conventionalcommits.
 
 ## 📦 Deployment
 
-1.  **Build the Plugin**: Run `npm run build` to create the production bundle in the `dist/` directory.
-2.  **Host the Plugin**: Upload the contents of the `dist/` folder to a secure hosting provider.
-3.  **Add to Contentstack**: In your Contentstack stack, navigate to **Settings > Extensions**, and add a new **Custom Field**. Point the "Hosting method" to the URL where you hosted your plugin.
+This is a **JSON RTE plugin**, not a Custom Field or an iframe app: there is no router, manifest or SDK init. The bundle `dist/highlight.js` is a SystemJS module whose default export is built with `@contentstack/app-sdk` `PluginBuilder` (id `highlight`, title "Highlight", element type `text`, shown in the toolbar and hovering toolbar). It wraps the selected text in `<span class="highlight">` (pale yellow background).
+
+### Build
+
+```bash
+npm ci
+npm run build   # writes dist/highlight.js (dist/ is git-ignored)
+npm test        # unit tests; npm run test:coverage enforces 90%
+```
+
+### Add it to a JSON RTE field
+
+1.  Make the built `highlight.js` reachable over HTTPS. For local development, `npm start` serves it at `https://localhost:1268/highlight.js`.
+2.  In Contentstack, add the plugin to the JSON Rich Text Editor field's plugin list, pointing it at that bundle URL (Developer Hub RTE plugin, or the field's **Plugins** setting in the content type).
+3.  Open an entry with that JSON RTE field, select text and click **Highlight**.
+
+### Where the production bundle is served
+
+unknown — MKT-19749
 
 ## 🤝 Contributing
 
